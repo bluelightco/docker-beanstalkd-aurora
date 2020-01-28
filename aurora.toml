@@ -1,4 +1,4 @@
-servers = []
+servers = ["127.0.0.1:11300"]
 listen = "0.0.0.0:3000"
 version = 2.1
 

@@ -1,8 +1,6 @@
 FROM alpine:3.11
 
 ENV AURORA_VERSION 2.2
-ENV BEANSTALKD_HOST 127.0.0.1
-ENV BEANSTALKD_PORT 11300
 
 RUN apk add --no-cache curl
 
@@ -12,9 +10,8 @@ RUN curl -L -o /tmp/aurora.tgz "https://github.com/xuri/aurora/releases/download
     && chmod +x /usr/bin/aurora \
     && rm -rf /tmp/*
 
-COPY ["run.sh", "aurora.toml", "/"]
+COPY ["aurora.toml", "/"]
 
 EXPOSE 3000
 
-ENTRYPOINT ["/run.sh"]
-CMD ["/usr/bin/aurora", "-c", "/aurora.toml"]
+ENTRYPOINT ["/usr/bin/aurora", "-c", "/aurora.toml"]
